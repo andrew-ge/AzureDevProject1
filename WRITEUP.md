@@ -107,4 +107,4 @@ redirect_path and secrets and keys are provided for the oauth2.
 
 **Issue in the logging**: I have setup the necessary loggoing level and at the app logging setting (see img)
 
-![Image of logging set in Azure App] (MyImages/logging_setting.png?raw=true)
+![Image of logging set in Azure App] (https://github.com/andrew-ge/AzureDevProject1/blob/main/MyImages/logging_setting.png)
