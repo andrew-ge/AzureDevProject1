@@ -46,9 +46,14 @@ https://github.com/andrew-ge/AzureDevProject1
 
 **Screen shots are located in the _MyImages_ directory**
 
+## The URL for the Python App Service 
+
+https://andrewcms-webapp.azurewebsites.net
+
+
 ## The following are the changes on the app 
 
-#### config.py
+### config.py
 
 
 	class Config(object):
@@ -93,7 +98,7 @@ https://github.com/andrew-ge/AzureDevProject1
 In the above code, the neccessary configuration values are put into the file so that app can pick up the correct information to access the Azure resources (e.g., database). Also the 
 redirect_path and secrets and keys are provided for the oauth2.
 
-## __init__.py
+### __init__.py
 
 
 	TODO: Add any logging levels and handlers with app.logger
@@ -108,7 +113,7 @@ redirect_path and secrets and keys are provided for the oauth2.
 
 ![Image of logging set in Azure App](MyImages/logging_setting.png)
 
-## view.py
+### view.py
 
 The follow procedure/functions are updated to complete the TODO's
 
@@ -174,3 +179,35 @@ The follow procedure/functions are updated to complete the TODO's
 			state=state or str(uuid.uuid4()),
 			redirect_uri=url_for('authorized', _external=True, _scheme='https'))
 
+
+## The following are the required screen shots for the project submission:
+
+
+1. A screenshot of an article created in the Article CMS on Azure. The screenshot must also include the URL. The article should have the following fields set:
+> Title: "Hello World!"
+> Author: "Jane Doe"
+> Body: "My name is Jane Doe and this is my first article!"
+
+![Image of article created](MyImages/article-cms-solution.png)
+
+
+2. A screenshot of the resource group from the Azure Portal including all of the resources that were created to complete this project. (see sample screenshot above).
+
+![Image of resources in Azure](MyImages/azure-portal-resouce-group.png)
+
+3. A screenshot showing the created tables and one query of data from the initial scripts in the SQL database (see example in the project repository).
+
+![Image of SQL db and table](MyImages/asql-storage-solution.png)
+
+4. A screenshot showing an example of blob endpoints for where images are sent for storage (see example in the project repository).
+
+![Image of blob endpoints](MyImages/blob-solution.png)
+
+5. A screenshot of the redirect URIs related to Microsoft authentication 
+
+![Image of redirect URI](MyImages/uri-redirects-solution.png)
+
+6. A screenshot showing one potential form of logging with an "Invalid login attempt" and "admin logged in successfully", taken from the app's Log stream or other logs you create and store (see example in project repository). You can customize your log messages as you see fit for these situations.
+
+![Image of logging ](MyImages/log-solution.png)
+ 
