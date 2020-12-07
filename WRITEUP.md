@@ -46,7 +46,7 @@ https://github.com/andrew-ge/AzureDevProject1
 
 **Screen shots are located in the _MyImages_ directory**
 
-##The following are the changes on the app 
+## The following are the changes on the app 
 
 #### config.py
 
@@ -104,3 +104,6 @@ redirect_path and secrets and keys are provided for the oauth2.
 	streamHandler.setLevel(logging.INFO)
 	app.logger.addHandler(streamHandler)
 '''
+
+**Issue in the logging**: I have setup the necessary loggoing level and at the app logging setting (see img)
+![Image of logging set in Azure App] (\MyImages\logging_setting.png)
