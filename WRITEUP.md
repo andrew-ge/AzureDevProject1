@@ -50,60 +50,59 @@ https://github.com/andrew-ge/AzureDevProject1
 
 #### config.py
 
-'''
-class Config(object):
-    SECRET_KEY = os.environ.get('SECRET_KEY') or 'secret-key'
 
-    BLOB_ACCOUNT = os.environ.get('BLOB_ACCOUNT') or 'andrewcmstorage'
-    BLOB_STORAGE_KEY = os.environ.get('BLOB_STORAGE_KEY') or 'VJugobhghiLDOeSEjQ/3zNznfaKZsbimr+jjWyyYpzE77k+FCePasmxmMZxfVXfFbidt1C213UC03yaRiHld+w=='
-    BLOB_CONTAINER = os.environ.get('BLOB_CONTAINER') or 'images'
+	class Config(object):
+		SECRET_KEY = os.environ.get('SECRET_KEY') or 'secret-key'
 
-    SQL_SERVER = os.environ.get('SQL_SERVER') or 'andrewcms-server.database.windows.net'
-    SQL_DATABASE = os.environ.get('SQL_DATABASE') or 'andrewcms-db'
-    SQL_USER_NAME = os.environ.get('SQL_USER_NAME') or 'andrewcms'
-    SQL_PASSWORD = os.environ.get('SQL_PASSWORD') or 'p@ssword123'
-    # Below URI may need some adjustments for driver version, based on your OS, if running locally
-    SQLALCHEMY_DATABASE_URI = 'mssql+pyodbc://' + SQL_USER_NAME + '@' + SQL_SERVER + ':' + SQL_PASSWORD + '@' + SQL_SERVER + ':1433/' + SQL_DATABASE  + '?driver=ODBC+Driver+17+for+SQL+Server'
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
+		BLOB_ACCOUNT = os.environ.get('BLOB_ACCOUNT') or 'andrewcmstorage'
+		BLOB_STORAGE_KEY = os.environ.get('BLOB_STORAGE_KEY') or 'VJugobhghiLDOeSEjQ/3zNznfaKZsbimr+jjWyyYpzE77k+FCePasmxmMZxfVXfFbidt1C213UC03yaRiHld+w=='
+		BLOB_CONTAINER = os.environ.get('BLOB_CONTAINER') or 'images'
 
-    ### Info for MS Authentication ###
-    ### As adapted from: https://github.com/Azure-Samples/ms-identity-python-webapp ###
-    CLIENT_SECRET = "5WC0eqAvdG-x.fmSVNxR3N-X6_X0pCldK5"
-    # In your production app, Microsoft recommends you to use other ways to store your secret,
-    # such as KeyVault, or environment variable as described in Flask's documentation here:
-    # https://flask.palletsprojects.com/en/1.1.x/config/#configuring-from-environment-variables
-    # CLIENT_SECRET = os.getenv("CLIENT_SECRET")
-    # if not CLIENT_SECRET:
-    #     raise ValueError("Need to define CLIENT_SECRET environment variable")
+		SQL_SERVER = os.environ.get('SQL_SERVER') or 'andrewcms-server.database.windows.net'
+		SQL_DATABASE = os.environ.get('SQL_DATABASE') or 'andrewcms-db'
+		SQL_USER_NAME = os.environ.get('SQL_USER_NAME') or 'andrewcms'
+		SQL_PASSWORD = os.environ.get('SQL_PASSWORD') or 'p@ssword123'
+		# Below URI may need some adjustments for driver version, based on your OS, if running locally
+		SQLALCHEMY_DATABASE_URI = 'mssql+pyodbc://' + SQL_USER_NAME + '@' + SQL_SERVER + ':' + SQL_PASSWORD + '@' + SQL_SERVER + ':1433/' + SQL_DATABASE  + '?driver=ODBC+Driver+17+for+SQL+Server'
+		SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-    AUTHORITY = "https://login.microsoftonline.com/common"  # For multi-tenant app, else put tenant name
-    # AUTHORITY = "https://login.microsoftonline.com/Enter_the_Tenant_Name_Here"
+		### Info for MS Authentication ###
+		### As adapted from: https://github.com/Azure-Samples/ms-identity-python-webapp ###
+		CLIENT_SECRET = "5WC0eqAvdG-x.fmSVNxR3N-X6_X0pCldK5"
+		# In your production app, Microsoft recommends you to use other ways to store your secret,
+		# such as KeyVault, or environment variable as described in Flask's documentation here:
+		# https://flask.palletsprojects.com/en/1.1.x/config/#configuring-from-environment-variables
+		# CLIENT_SECRET = os.getenv("CLIENT_SECRET")
+		# if not CLIENT_SECRET:
+		#     raise ValueError("Need to define CLIENT_SECRET environment variable")
 
-    CLIENT_ID = "6bb4f4c6-3b1e-447f-84e2-41aaae8c3035"
+		AUTHORITY = "https://login.microsoftonline.com/common"  # For multi-tenant app, else put tenant name
+		# AUTHORITY = "https://login.microsoftonline.com/Enter_the_Tenant_Name_Here"
 
-    REDIRECT_PATH = "/getAToken"  # Used to form an absolute URL; must match to app's redirect_uri set in AAD
+		CLIENT_ID = "6bb4f4c6-3b1e-447f-84e2-41aaae8c3035"
 
-    # You can find the proper permission names from this document
-    # https://docs.microsoft.com/en-us/graph/permissions-reference
-    SCOPE = ["User.Read"] # Only need to read user profile for this app
+		REDIRECT_PATH = "/getAToken"  # Used to form an absolute URL; must match to app's redirect_uri set in AAD
 
-    SESSION_TYPE = "filesystem"  # Token cache will be stored in server-side session
+		# You can find the proper permission names from this document
+		# https://docs.microsoft.com/en-us/graph/permissions-reference
+		SCOPE = ["User.Read"] # Only need to read user profile for this app
 
-'''
+		SESSION_TYPE = "filesystem"  # Token cache will be stored in server-side session
+
 
 In the above code, the neccessary configuration values are put into the file so that app can pick up the correct information to access the Azure resources (e.g., database). Also the 
 redirect_path and secrets and keys are provided for the oauth2.
 
 ## __init__.py
 
-'''
+
 	TODO: Add any logging levels and handlers with app.logger
 	wsgi_app = app.wsgi_app
 	app.logger.setLevel(logging.INFO)
 	streamHandler = logging.StreamHandler()
 	streamHandler.setLevel(logging.INFO)
 	app.logger.addHandler(streamHandler)
-'''
+
 
 **Issue in the logging**: I have setup the necessary loggoing level and at the app logging setting (see img)
 
