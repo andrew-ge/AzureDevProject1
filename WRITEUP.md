@@ -193,11 +193,11 @@ The follow procedure/functions are updated to complete the TODO's
 
 2. A screenshot of the resource group from the Azure Portal including all of the resources that were created to complete this project. (see sample screenshot above).
 
-![Image of resources in Azure](MyImages/azure-portal-resouce-group.png)
+![Image of resources in Azure](MyImages/azure-portal-resource-group.png)
 
 3. A screenshot showing the created tables and one query of data from the initial scripts in the SQL database (see example in the project repository).
 
-![Image of SQL db and table](MyImages/asql-storage-solution.png)
+![Image of SQL db and table](MyImages/sql-storage-solution.png)
 
 4. A screenshot showing an example of blob endpoints for where images are sent for storage (see example in the project repository).
 
