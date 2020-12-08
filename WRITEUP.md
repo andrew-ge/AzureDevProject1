@@ -7,14 +7,31 @@
 *For **both** a VM or App Service solution for the CMS app:*
 
 - *Analyze costs, scalability, availability, and workflow*
-> **VM**: providing infrastructure as a service (IaaS) by allowing you to create and use virtual machines in the cloud.
+
+As my CMS project is a small application and requires less resources. I use the Ubuntun Linux and ** basic ** setup. The following table compares the 
+Category | Virtual Machine (VM) | App Service
+---------|----------------------|------------
+Operation System | Linux  w/ Basic Tier    | Linux w/Basic Tier
+Cloud Type | IaaS | PaaS
+Computing Node | A2- 2 Cores, 3.5 GB RAM 60 GB Temp Storage per VM| B2 - 2 Cores, 3.5 GB RAM, 10GB Storage
+Monthly Operation Hours | 730  | 730
+Monthly Cost | $63.64 | $25.55
+Scalability Basic Tier| Up to 8 Cores, 14 GB RAM, 240 GB Temp Storage per VM, Can have multiple VMs| 4 Cores, 7 GB RAM , 10 GB Storage
+Scalability General | Auto Scaling with VM sets upto 1000 nodes per scale set | built-in service, 20 instances, 
+Availablity | All VM with multiple avilabilty zones have >99.9% connectivities| Microsoft's global datacenter infrastructure, and the App Service SLA promises high availability (monthly >99.95% or get service credit).
+Work Flow| Deploy Python and support packetages, maunal start app service |deployed with automatic models, i.e., GitHub.
+
+ 
+The following are the original answer with descriptions. 
+
+> ** VM **: providing infrastructure as a service (IaaS) by allowing you to create and use virtual machines in the cloud.
 - For VM solution, user do not need to purchase and maintain the hardware which lower the cost. 
 - VMs are highly scalabile and flexible to configure. Users will have full access and control of the VM. The VMs can be grouped to provide high availability. 
 - The CPU, memories and other resouces can be optimzed to fit the need.  As the demands changing, the VMs can be scaled up or down.
 - As user has full control of the VM, all the OS, software packages and applications must be installed and maintained by the user.
 - To deploy a web severvice, one need to initiate the VM, install the OS, put the software development packeages and actually using scripts or other means to start the web service.
 
-> **App Service**: Azure App Service is a Platform as a Service (PaaS). It is an HTTP-based service for hosting web applications, REST APIs, and mobile back ends.
+> ** App Service **: Azure App Service is a Platform as a Service (PaaS). It is an HTTP-based service for hosting web applications, REST APIs, and mobile back ends.
 In this case the cloud provider,Azure, takes care of the infrastructure.
  
 - Azure web service provide the flexible cost structure for appropriate hardware allocation to host the application. The cost is based on the plan selected.
@@ -25,10 +42,12 @@ such as the amount of vCPUs or RAM, by changing the App Service pricing tier. Ho
 - As the PaaS nature, the app service limit the access to underline OS and software package. User has to pay for the service plan, even if your services or application isn’t running.
 There are hardware limitations, such as a maximum of 14GB of memory and 4 vCPU cores per instance.
 
+
+
 - *Choose the appropriate solution (VM or App Service) for deploying the app*:
 
 > In this project, I am chosing the **App Service** for deploying the app.
- 
+
 - *Justify your choice*
 
 > For this project, the resource required is very limited. There is no chance to cross the upper limit of the app service provided. There are not special features that requiring the 
@@ -40,6 +59,13 @@ number of transcations and amount of CPU/memory are very limited. We can use the
 ### Assess app changes that would change your decision.
 
 *Detail how the app and any other needs would have to change for you to change your decision in the last section.* 
+
+As the comparsion shown in the last section, I will use *app service* for standard Linux-based web applications based on the initial analysis and traffic model. 
+When the traffic volumn increasing and more customized needs raised to verify the server configurations and analyze some performance issues. The App Service s a managed platform 
+that handles deployment automatically. There is no simple way to gain access to the app configuration files once it’s running. Also, as demand goes higher and latency requirements are important. 
+Then the App Service becomes not ideal. In this case, I will need remote access to the underlying web server, so that I can personally configure server tasks for optimization. I may start use the VM solution.
+
+
 
 **The project is using GitHub. The following link contains all the changes for the app and required screen shots**
 https://github.com/andrew-ge/AzureDevProject1
