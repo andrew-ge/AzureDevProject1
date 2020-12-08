@@ -31,4 +31,4 @@ jobs:
       with:
         app-name: 'andrewcms-webapp'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_b6711149eace44e1b32dc1189e8f22d6 }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_7f861bc4d21d4ab6bf6be381f2aa9bc4 }}
