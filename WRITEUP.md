@@ -143,9 +143,34 @@ redirect_path and secrets and keys are provided for the oauth2.
 
 The follow procedure/functions are updated to complete the TODO's
 
+##### login funciton:
+
+	def login():
+		if current_user.is_authenticated:
+			app.logger.info('%s already logged in successfully', current_user.username)
+			return redirect(url_for('home'))
+		form = LoginForm()
+		if form.validate_on_submit():
+			user = User.query.filter_by(username=form.username.data).first()
+			if user is None or not user.check_password(form.password.data):
+				flash('Invalid username or password')
+				app.logger.info('Invalid username or password. Login Failed')
+				return redirect(url_for('login'))
+			login_user(user, remember=form.remember_me.data)
+			next_page = request.args.get('next')
+			if not next_page or url_parse(next_page).netloc != '':
+				next_page = url_for('home')
+
+			app.logger.info('%s logged in successfully', user.username)
+			
+			return redirect(next_page)
+		session["state"] = str(uuid.uuid4())
+		auth_url = _build_auth_url(scopes=Config.SCOPE, state=session["state"])
+		return render_template('login.html', title='Sign In', form=form, auth_url=auth_url)
+
+
 ##### authorized function:
 
-	@app.route(Config.REDIRECT_PATH)  # Its absolute URL must match your app's redirect_uri set in AAD
 	def authorized():
 		if request.args.get('state') != session.get("state"):
 			return redirect(url_for("home"))  # No-OP. Goes back to Index page
@@ -159,6 +184,7 @@ The follow procedure/functions are updated to complete the TODO's
 				scopes=Config.SCOPE,
 				redirect_uri=url_for('authorized', _external=True, _scheme='https'))
 			if "error" in result:
+				app.logger.info('%s logged in failure. Please check your username and password!', user.username)
 				return render_template("auth_error.html", result=result)
 			session["user"] = result.get("id_token_claims")
 			# Note: In a real app, we'd use the 'name' property from session["user"] below
@@ -166,8 +192,9 @@ The follow procedure/functions are updated to complete the TODO's
 			user = User.query.filter_by(username="admin").first()
 			login_user(user)
 			_save_cache(cache)
+			app.logger.info('%s logged in successfully', user.username)
 		return redirect(url_for('home'))
-		
+			
 
 ##### _load_cache:
 		
